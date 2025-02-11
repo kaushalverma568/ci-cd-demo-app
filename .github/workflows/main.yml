@@ -26,4 +26,14 @@ jobs:
 
       - name: Create project build
         run: npm run build
+      
+      - name: Creating a local build
+        run: npm run start
+      
+      - name: Add the local build to the repository
+        uses: actions/upload-artifact@v4
+        with:
+          name: next-build
+          path: .next
+          
 
