@@ -1,3 +1,28 @@
 name: 'Build Creation'
 
-on: 
+on:
+  push:
+    branches:
+      - main
+  
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Install and setup node version
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'npm'
+
+      - name: Install depedencies
+        run: npm install
+
+      - name: Create project build
+        run: npm run build
+
