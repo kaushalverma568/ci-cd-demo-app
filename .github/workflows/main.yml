@@ -24,6 +24,9 @@ jobs:
       - name: Install depedencies
         run: npm install
 
+      - name: Create folder
+        run: mkdir .next
+
       - name: Create project build
         run: npm run build
       
