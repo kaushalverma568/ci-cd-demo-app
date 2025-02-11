@@ -26,8 +26,16 @@ jobs:
       - name: Create project build
         run: npm run build # Trying to create build only
 
-      - name: Copy the project created files into the root directory
-        run: cp -r .next/* ./
+      - name: Creating a build directory
+        run: mkdir build
+      
+      - name: Moving all the files to the build directory
+        run: 
+          mv ./* build/
+          mv .next/* build/
+
+      # - name: Copy the project created files into the root directory
+      #   run: cp -r .next/* ./
       
       # - name: Add the local build to the repository
       #   uses: actions/upload-artifact@v4
