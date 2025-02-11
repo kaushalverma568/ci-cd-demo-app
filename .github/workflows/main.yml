@@ -12,12 +12,12 @@ jobs:
     
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       
       - name: Install and setup node version
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 18
           cache: 'npm'
       
       - name: Install dependencies
@@ -25,6 +25,9 @@ jobs:
         
       - name: Create project build
         run: npm run build # Trying to create build only
+
+      - name: Copy the project created files into the root directory
+        run: cp -r .next/* ./
       
       # - name: Add the local build to the repository
       #   uses: actions/upload-artifact@v4
