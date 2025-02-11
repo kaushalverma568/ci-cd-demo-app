@@ -32,7 +32,7 @@ jobs:
       - name: Moving all the files to the build directory
         run: 
           mv ./* build/
-          mv .next/* build/
+          # mv .next/* build/
 
       # - name: Copy the project created files into the root directory
       #   run: cp -r .next/* ./
