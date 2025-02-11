@@ -24,22 +24,23 @@ jobs:
         run: npm install
         
       - name: Create project build
-        run: npm run build # Trying to create build only
+        run: |
+          npm run build
+          echo "✅ Build created successfully!"
+          ls -la .next/
 
       - name: Creating a build directory
-        run: mkdir build
-      
-      - name: Moving all the files to the build directory
-        run: 
-          mv .next/* build/
-          # mv .next/* build/
+        run: mkdir -p build
 
-      # - name: Copy the project created files into the root directory
-      #   run: cp -r .next/* ./
-      
-      # - name: Add the local build to the repository
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #     name: next-build
-      #     path: .next/
-      #     if-no-files-found: error  # This will make the workflow fail if no files are found
+      - name: Moving all the files to the build directory
+        run: |
+          mv .next/* build/ || echo "No files to move"
+          echo "📦 Contents of build directory:"
+          ls -la build/
+
+      - name: Add the local build to the repository
+        uses: actions/upload-artifact@v4
+        with:
+          name: next-build
+          path: build/
+          if-no-files-found: error
