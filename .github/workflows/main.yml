@@ -26,9 +26,9 @@ jobs:
       - name: Create project build
         run: npm run build
       
-      - name: Add the local build to the repository
-        uses: actions/upload-artifact@v4
-        with:
-          name: next-build
-          path: .next/
-          if-no-files-found: error  # This will make the workflow fail if no files are found
+      # - name: Add the local build to the repository
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: next-build
+      #     path: .next/
+      #     if-no-files-found: error  # This will make the workflow fail if no files are found
